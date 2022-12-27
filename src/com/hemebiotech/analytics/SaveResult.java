@@ -8,7 +8,6 @@ import java.util.*;
 
 public class SaveResult implements ISaveResult {
 
-
     private TreeMap<String, Integer> result;
 
     SaveResult(TreeMap<String, Integer> result)
@@ -21,20 +20,25 @@ public class SaveResult implements ISaveResult {
      * @param : saveresult is a map of string that write on a file the symptoms and the occurences.
      */
     @Override
-    public void saveResult() {
+    public void saveResult() throws IOException {
 
+        FileWriter writer = null;
 
         try{
-            FileWriter writer = new FileWriter("result.out");
+             writer = new FileWriter("result.out");
             Set<String> keys = result.keySet(); //list of key
             for(String key: keys){
                 writer.write(key + ":" + result.get(key) + "\n");
             }
-            writer.close();
 
-
-        }catch(IOException e){
+        }
+        catch(IOException e){
             e.printStackTrace();
+        }
+             finally {
+            if(writer != null) {
+                writer.close();
+            }
         }
     }
 }

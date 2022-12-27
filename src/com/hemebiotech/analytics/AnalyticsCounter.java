@@ -1,5 +1,6 @@
 package com.hemebiotech.analytics;
 
+import java.io.IOException;
 import java.util.*;
 
 public class AnalyticsCounter {
@@ -10,7 +11,7 @@ public class AnalyticsCounter {
 	 * @return  this method return symptoms read from a file called symptom.txt
 	 */
 
-	public List<String> readSymptom(ISymptomReader dataInput) {
+	public List<String> readSymptom(ISymptomReader dataInput) throws IOException {
 		return dataInput.getSymptoms();
 
 	}
@@ -31,7 +32,7 @@ public class AnalyticsCounter {
 	 * @param R this method return nothing.
 	 *        it will, eventhough, write the sortted and counted map result on a file called result.out
 	 */
-	public void saveResult (ISaveResult R){
+	public void saveResult (ISaveResult R) throws IOException {
 		R.saveResult();
 
 	}
